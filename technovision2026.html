@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f2f8fa">
+    <meta name="description" content="Technovision 2026 — a robotics and innovation event by FLUX Technical Club, SATI Vidisha.">
+    <title>Technovision 2026 | FLUX Technical Club</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Raleway:wght@400;500;600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: light;
+            --page: #f2f8fa;
+            --surface: rgba(255, 255, 255, 0.9);
+            --surface-solid: #ffffff;
+            --ink: #101827;
+            --muted: #5f6d7c;
+            --line: rgba(16, 110, 135, 0.18);
+            --cyan: #05aeca;
+            --cyan-dark: #087c96;
+            --blue: #304b73;
+            --warm: #ff6b52;
+            --shadow: 0 24px 70px rgba(12, 45, 66, 0.12);
+        }
+
+        [data-theme="dark"] {
+            color-scheme: dark;
+            --page: #101722;
+            --surface: rgba(22, 32, 45, 0.94);
+            --surface-solid: #172230;
+            --ink: #eef7fa;
+            --muted: #a3b3c1;
+            --line: rgba(80, 197, 218, 0.2);
+            --cyan: #35c7dd;
+            --cyan-dark: #8ee9f4;
+            --blue: #a9c1dc;
+            --warm: #ff8b72;
+            --shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 110px;
+        }
+
+        body {
+            min-width: 320px;
+            min-height: 100vh;
+            margin: 0;
+            color: var(--ink);
+            background-color: var(--page);
+            background-image:
+                linear-gradient(rgba(44, 139, 161, 0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(44, 139, 161, 0.07) 1px, transparent 1px),
+                url("background_image.jpg");
+            background-position: center top, center top, center top;
+            background-size: 38px 38px, 38px 38px, cover;
+            background-attachment: fixed;
+            font-family: "Raleway", Arial, sans-serif;
+            transition: color 180ms ease, background-color 180ms ease;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .container {
+            width: min(1200px, calc(100% - 44px));
+            margin-inline: auto;
+        }
+
+        .site-header {
+            position: sticky;
+            z-index: 10;
+            top: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            width: min(1380px, calc(100% - 40px));
+            min-height: 78px;
+            margin: 16px auto 0;
+            padding: 10px 22px;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: var(--surface);
+            box-shadow: 0 12px 36px rgba(14, 54, 75, 0.08);
+            backdrop-filter: blur(16px);
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            flex: 0 0 auto;
+        }
+
+        .brand img {
+            display: block;
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .brand-copy {
+            display: grid;
+            gap: 3px;
+        }
+
+        .brand-copy strong {
+            font-family: "Audiowide", sans-serif;
+            font-size: 1.25rem;
+            letter-spacing: 0.03em;
+        }
+
+        .brand-copy span {
+            color: var(--cyan-dark);
+            font-family: "Share Tech Mono", monospace;
+            font-size: 0.64rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+
+        .site-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(14px, 2.3vw, 30px);
+        }
+
+        .site-nav a,
+        .theme-toggle,
+        .menu-toggle {
+            font-family: "Share Tech Mono", monospace;
+            font-size: 0.78rem;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .site-nav a {
+            color: var(--muted);
+            transition: color 160ms ease;
+        }
+
+        .site-nav a:hover,
+        .site-nav a:focus-visible {
+            color: var(--cyan-dark);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-toggle,
+        .menu-toggle {
+            min-height: 40px;
+            padding: 0 13px;
+            border: 1px solid var(--line);
+            border-radius: 11px;
+            color: var(--cyan-dark);
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 42px;
+            padding: 0;
+            font-size: 1.2rem;
+        }
+
+        main {
+            overflow: hidden;
+        }
+
+        .hero {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+            align-items: center;
+            gap: clamp(28px, 5vw, 72px);
+            min-height: 620px;
+            padding-block: 76px 84px;
+        }
+
+        .hero::before {
+            position: absolute;
+            z-index: -1;
+            top: 36px;
+            right: -8%;
+            width: 62%;
+            height: 82%;
+            border: 1px solid var(--line);
+            border-radius: 44% 56% 54% 46%;
+            background: radial-gradient(ellipse at 48% 48%, rgba(31, 196, 216, 0.13), transparent 66%);
+            content: "";
+            transform: rotate(-8deg);
+        }
+
+        .system-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 13px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--cyan-dark);
+            background: var(--surface);
+            font-family: "Share Tech Mono", monospace;
+            font-size: 0.73rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .system-tag::before {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--cyan);
+            box-shadow: 0 0 14px var(--cyan);
+            content: "";
+        }
+
+        .hero-kicker,
+        .section-kicker {
+            margin: 27px 0 12px;
+            color: var(--cyan-dark);
+            font-family: "Share Tech Mono", monospace;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0;
+        }
+
+        .hero h1 {
+            max-width: 720px;
+            margin-bottom: 20px;
+            font-family: "Audiowide", "Raleway", sans-serif;
+            font-size: clamp(3.2rem, 7.5vw, 6.7rem);
+            font-weight: 400;
+            letter-spacing: -0.07em;
+            line-height: 0.98;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: var(--cyan-dark);
+            font-family: "Raleway", sans-serif;
+            font-weight: 900;
+            letter-spacing: -0.075em;
+        }
+
+        .hero-copy {
+            max-width: 560px;
+            margin-bottom: 28px;
+            padding-left: 17px;
+            border-left: 3px solid var(--cyan);
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.75;
+        }
+
+        .hero-copy strong {
+            color: var(--ink);
+        }
+
+        .button-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .button {
+            display: inline-flex;
+            min-height: 50px;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 0 21px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            font-family: "Share Tech Mono", monospace;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: transform 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-primary {
+            border-color: var(--cyan);
+            color: #062b34;
+            background: var(--cyan);
+            box-shadow: 0 10px 24px rgba(5, 174, 202, 0.2);
+        }
+
+        .button-primary:hover {
+            background: #42d1e4;
+            box-shadow: 0 14px 28px rgba(5, 174, 202, 0.28);
+        }
+
+        .button-secondary {
+            color: var(--ink);
+            background: var(--surface);
+        }
+
+        .hero-art {
+            position: relative;
+            display: grid;
+            min-height: 410px;
+            place-items: center;
+        }
+
+        .art-frame {
+            position: relative;
+            display: grid;
+            width: min(100%, 440px);
+            aspect-ratio: 1;
+            place-items: center;
+            border: 1px solid var(--line);
+            border-radius: 44% 56% 49% 51%;
+            background:
+                radial-gradient(circle at 50% 44%, rgba(5, 174, 202, 0.2), transparent 34%),
+                linear-gradient(145deg, var(--surface), rgba(255, 255, 255, 0.2));
+            box-shadow: var(--shadow);
+            transform: rotate(-4deg);
+        }
+
+        .art-frame::before,
+        .art-frame::after {
+            position: absolute;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            content: "";
+        }
+
+        .art-frame::before {
+            inset: 9%;
+        }
+
+        .art-frame::after {
+            inset: 18%;
+            border-style: dashed;
+        }
+
+        .robot {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            width: 172px;
+            justify-items: center;
+            transform: rotate(4deg);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .robot-head {
+            position: relative;
+            display: flex;
+            width: 132px;
+            height: 106px;
+            align-items: center;
+            justify-content: center;
+            gap: 22px;
+            border: 4px solid #293241;
+            border-radius: 45% 45% 38% 38%;
+            background: linear-gradient(145deg, #fafcff, #c7d5dc);
+            box-shadow: inset -9px -8px 0 rgba(31, 52, 68, 0.1), 0 15px 30px rgba(14, 40, 55, 0.2);
+        }
+
+        .robot-head::before,
+        .robot-head::after {
+            position: absolute;
+            top: 35px;
+            width: 10px;
+            height: 20px;
+            border-radius: 8px;
+            background: var(--cyan);
+            box-shadow: 0 0 15px rgba(5, 174, 202, 0.7);
+            content: "";
+        }
+
+        .robot-head::before {
+            left: 30px;
+        }
+
+        .robot-head::after {
+            right: 30px;
+        }
+
+        .robot-ear {
+            position: absolute;
+            top: 32px;
+            width: 15px;
+            height: 38px;
+            border: 3px solid #293241;
+            border-radius: 8px;
+            background: var(--cyan);
+        }
+
+        .robot-ear.left {
+            left: -17px;
+        }
+
+        .robot-ear.right {
+            right: -17px;
+        }
+
+        .robot-neck {
+            width: 30px;
+            height: 17px;
+            border-inline: 4px solid #293241;
+            background: #8fa4b1;
+        }
+
+        .robot-body {
+            display: grid;
+            width: 116px;
+            height: 112px;
+            place-items: center;
+            border: 4px solid #293241;
+            border-radius: 26px 26px 38px 38px;
+            background: linear-gradient(145deg, #eef4f7, #aebfca);
+            box-shadow: inset -9px -7px 0 rgba(31, 52, 68, 0.12), 0 12px 26px rgba(14, 40, 55, 0.16);
+        }
+
+        .robot-core {
+            display: grid;
+            width: 43px;
+            height: 43px;
+            place-items: center;
+            border: 5px solid var(--cyan-dark);
+            border-radius: 50%;
+            background: rgba(5, 174, 202, 0.17);
+            box-shadow: 0 0 24px rgba(5, 174, 202, 0.35);
+        }
+
+        .robot-core::after {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--cyan);
+            content: "";
+        }
+
+        .robot-arm {
+            position: absolute;
+            top: 145px;
+            width: 22px;
+            height: 72px;
+            border: 4px solid #293241;
+            border-radius: 12px;
+            background: linear-gradient(90deg, #aebfca, #eef4f7);
+        }
+
+        .robot-arm.left {
+            left: 7px;
+            transform: rotate(19deg);
+        }
+
+        .robot-arm.right {
+            right: 7px;
+            transform: rotate(-19deg);
+        }
+
+        .art-label {
+            position: absolute;
+            z-index: 2;
+            padding: 9px 12px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            color: var(--cyan-dark);
+            background: var(--surface-solid);
+            box-shadow: 0 8px 24px rgba(12, 45, 66, 0.1);
+            font-family: "Share Tech Mono", monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .art-label.top {
+            top: 12%;
+            right: 5%;
+        }
+
+        .art-label.bottom {
+            bottom: 10%;
+            left: 3%;
+        }
+
+        .event-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin-bottom: 88px;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+        }
+
+        .strip-item {
+            display: flex;
+            min-height: 92px;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 24px;
+        }
+
+        .strip-item + .strip-item {
+            border-left: 1px solid var(--line);
+        }
+
+        .strip-number {
+            color: var(--cyan-dark);
+            font-family: "Audiowide", sans-serif;
+            font-size: 1.55rem;
+        }
+
+        .strip-copy {
+            display: grid;
+            gap: 4px;
+        }
+
+        .strip-copy strong {
+            font-size: 0.93rem;
+        }
+
+        .strip-copy span {
+            color: var(--muted);
+            font-family: "Share Tech Mono", monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .section {
+            padding-block: 0 96px;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .section-kicker {
+            margin-top: 0;
+        }
+
+        .section-heading h2 {
+            max-width: 660px;
+            margin-bottom: 0;
+            font-size: clamp(2rem, 4.5vw, 3.8rem);
+            font-weight: 900;
+            letter-spacing: -0.065em;
+            line-height: 1.02;
+        }
+
+        .section-heading > p {
+            max-width: 300px;
+            margin-bottom: 2px;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .track-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .track-card {
+            position: relative;
+            display: flex;
+            min-height: 290px;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 25px;
+            border: 1px solid var(--line);
+            border-radius: 15px;
+            background: var(--surface);
+            box-shadow: 0 14px 40px rgba(12, 45, 66, 0.07);
+            transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .track-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--cyan);
+            box-shadow: var(--shadow);
+        }
+
+        .track-card::after {
+            position: absolute;
+            right: -25px;
+            bottom: -48px;
+            width: 150px;
+            height: 150px;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            box-shadow: 0 0 0 18px rgba(5, 174, 202, 0.035), 0 0 0 38px rgba(5, 174, 202, 0.025);
+            content: "";
+        }
+
+        .track-topline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 34px;
+        }
+
+        .track-index,
+        .track-type {
+            color: var(--cyan-dark);
+            font-family: "Share Tech Mono", monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .track-icon {
+            display: grid;
+            width: 42px;
+            height: 42px;
+            place-items: center;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            color: var(--cyan-dark);
+            background: rgba(5, 174, 202, 0.08);
+            font-size: 1.3rem;
+        }
+
+        .track-card h3 {
+            max-width: 250px;
+            margin-bottom: 10px;
+            font-size: 1.45rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+        }
+
+        .track-card p {
+            max-width: 300px;
+            margin-bottom: 22px;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .track-link {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: auto;
+            color: var(--cyan-dark);
+            font-family: "Share Tech Mono", monospace;
+            font-size: 0.77rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .format-panel {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 44px;
+            padding: clamp(26px, 5vw, 54px);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background:
+                radial-gradient(circle at 0 100%, rgba(5, 174, 202, 0.12), transparent 45%),
+                var(--surface);
+            box-shadow: var(--shadow);
+        }
+
+        .format-panel h2 {
+            margin-bottom: 12px;
+            font-size: clamp(2rem, 4vw, 3.1rem);
+            font-weight: 900;
+            letter-spacing: -0.065em;
+            line-height: 1.03;
+        }
+
+        .format-panel > div:first-child p:last-child {
+            margin-bottom: 0;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .steps {
+            display: grid;
+            gap: 0;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 42px 1fr;
+            gap: 14px;
+            padding-block: 13px;
+        }
+
+        .step + .step {
+            border-top: 1px solid var(--line);
+        }
+
+        .step-number {
+            color: var(--cyan-dark);
+            font-family: "Share Tech Mono", monospace;
+            font-size: 0.8rem;
+        }
+
+        .step h3 {
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        .step p {
+            margin-bottom: 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.55;
+        }
+
+        .register-panel {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            overflow: hidden;
+            margin-bottom: 85px;
+            padding: clamp(26px, 5vw, 48px);
+            border: 1px solid rgba(5, 174, 202, 0.35);
+            border-radius: 18px;
+            background: linear-gradient(115deg, rgba(5, 174, 202, 0.16), var(--surface) 58%);
+        }
+
+        .register-panel::after {
+            position: absolute;
+            top: -100px;
+            right: 12%;
+            width: 280px;
+            height: 280px;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            box-shadow: 0 0 0 25px rgba(5, 174, 202, 0.04), 0 0 0 50px rgba(5, 174, 202, 0.03);
+            content: "";
+            pointer-events: none;
+        }
+
+        .register-panel > div,
+        .register-panel > a {
+            position: relative;
+            z-index: 1;
+        }
+
+        .register-panel h2 {
+            margin-bottom: 8px;
+            font-size: clamp(1.8rem, 4vw, 2.7rem);
+            font-weight: 900;
+            letter-spacing: -0.06em;
+        }
+
+        .register-panel p {
+            max-width: 560px;
+            margin-bottom: 0;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .site-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding-block: 22px 30px;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-family: "Share Tech Mono", monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .site-footer a {
+            color: var(--cyan-dark);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(4deg); }
+            50% { transform: translateY(-12px) rotate(4deg); }
+        }
+
+        @media (max-width: 900px) {
+            .site-header {
+                gap: 16px;
+            }
+
+            .site-nav {
+                gap: 14px;
+            }
+
+            .site-nav a {
+                font-size: 0.7rem;
+            }
+
+            .hero {
+                grid-template-columns: 1fr 0.8fr;
+                min-height: 560px;
+            }
+
+            .track-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+            html {
+                scroll-padding-top: 88px;
+            }
+
+            .site-header {
+                top: 8px;
+                width: calc(100% - 24px);
+                min-height: 68px;
+                margin-top: 10px;
+                padding: 8px 12px;
+                border-radius: 16px;
+            }
+
+            .brand {
+                gap: 8px;
+            }
+
+            .brand img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .brand-copy strong {
+                font-size: 1rem;
+            }
+
+            .brand-copy span {
+                font-size: 0.55rem;
+            }
+
+            .menu-toggle {
+                display: inline-grid;
+                place-items: center;
+            }
+
+            .theme-toggle {
+                min-height: 38px;
+                padding-inline: 10px;
+                font-size: 0.68rem;
+            }
+
+            .site-nav {
+                position: absolute;
+                top: calc(100% + 8px);
+                right: 0;
+                left: 0;
+                display: none;
+                align-items: stretch;
+                padding: 10px;
+                border: 1px solid var(--line);
+                border-radius: 14px;
+                background: var(--surface-solid);
+                box-shadow: var(--shadow);
+            }
+
+            .site-nav.is-open {
+                display: grid;
+                gap: 0;
+            }
+
+            .site-nav a {
+                padding: 12px;
+                border-radius: 8px;
+                font-size: 0.78rem;
+            }
+
+            .site-nav a:hover {
+                background: rgba(5, 174, 202, 0.08);
+            }
+
+            .container {
+                width: min(100% - 32px, 540px);
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                min-height: auto;
+                padding-block: 64px 38px;
+            }
+
+            .hero::before {
+                top: auto;
+                right: -28%;
+                bottom: 3%;
+                width: 100%;
+                height: 48%;
+            }
+
+            .hero h1 {
+                font-size: clamp(3.1rem, 16vw, 5.6rem);
+            }
+
+            .hero-art {
+                min-height: 330px;
+            }
+
+            .art-frame {
+                width: min(78vw, 340px);
+            }
+
+            .event-strip {
+                grid-template-columns: 1fr;
+                margin-bottom: 64px;
+            }
+
+            .strip-item {
+                min-height: 74px;
+                padding: 13px 18px;
+            }
+
+            .strip-item + .strip-item {
+                border-top: 1px solid var(--line);
+                border-left: 0;
+            }
+
+            .section {
+                padding-bottom: 64px;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            .track-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .track-card {
+                min-height: 250px;
+            }
+
+            .format-panel {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .register-panel {
+                align-items: flex-start;
+                flex-direction: column;
+                margin-bottom: 58px;
+            }
+
+            .site-footer {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="https://www.clubflux.in/" aria-label="FLUX Technical Club home">
+            <img src="https://www.clubflux.in/fluxlogo.png" alt="FLUX logo">
+            <span class="brand-copy">
+                <strong>FLUX</strong>
+                <span>Technical Club</span>
+            </span>
+        </a>
+
+        <nav class="site-nav" id="site-navigation" aria-label="Main navigation">
+            <a href="#overview">Overview</a>
+            <a href="#challenges">Challenges</a>
+            <a href="#format">Format</a>
+            <a href="#register">Register</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme">◐ Theme</button>
+            <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-navigation">☰</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero container" id="overview" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <span class="system-tag">FLUX event file / 2026</span>
+                <p class="hero-kicker">Think it. Build it. Prove it.</p>
+                <h1 id="hero-title">Techno<span>vision</span></h1>
+                <p class="hero-copy">
+                    A celebration of <strong>robotics, ideas, and hands-on engineering</strong> by FLUX Technical Club at SATI Vidisha. Pick a challenge, bring your curiosity, and make your build count.
+                </p>
+                <div class="button-row">
+                    <a class="button button-primary" href="#challenges">Explore challenges <span aria-hidden="true">↘</span></a>
+                    <a class="button button-secondary" href="test.html">Open registration <span aria-hidden="true">↗</span></a>
+                </div>
+            </div>
+
+            <div class="hero-art" aria-hidden="true">
+                <span class="art-label top">Autonomous / 2026</span>
+                <div class="art-frame">
+                    <div class="robot">
+                        <span class="robot-ear left"></span>
+                        <span class="robot-ear right"></span>
+                        <div class="robot-head"></div>
+                        <div class="robot-neck"></div>
+                        <span class="robot-arm left"></span>
+                        <span class="robot-arm right"></span>
+                        <div class="robot-body"><div class="robot-core"></div></div>
+                    </div>
+                </div>
+                <span class="art-label bottom">Build / test / repeat</span>
+            </div>
+        </section>
+
+        <div class="event-strip container" aria-label="Event at a glance">
+            <div class="strip-item">
+                <span class="strip-number">03</span>
+                <span class="strip-copy"><strong>Challenge tracks</strong><span>Choose your arena</span></span>
+            </div>
+            <div class="strip-item">
+                <span class="strip-number">02</span>
+                <span class="strip-copy"><strong>Participants per team</strong><span>Solo or duo</span></span>
+            </div>
+            <div class="strip-item">
+                <span class="strip-number">01</span>
+                <span class="strip-copy"><strong>Big idea</strong><span>Yours to build</span></span>
+            </div>
+        </div>
+
+        <section class="section container" id="challenges" aria-labelledby="challenges-title">
+            <div class="section-heading">
+                <div>
+                    <p class="section-kicker">Choose your protocol</p>
+                    <h2 id="challenges-title">Three ways to put your ideas in motion.</h2>
+                </div>
+                <p>Explore the event tracks from the previous Technovision registration. Select the challenge that fits your team.</p>
+            </div>
+
+            <div class="track-grid">
+                <article class="track-card">
+                    <div class="track-topline">
+                        <span class="track-index">Track / 01</span>
+                        <span class="track-icon" aria-hidden="true">⌘</span>
+                    </div>
+                    <span class="track-type">Ideas to impact</span>
+                    <h3>Module Presentation</h3>
+                    <p>Present your module, project, or innovative idea and show the thinking behind your build.</p>
+                    <a class="track-link" href="test.html">Open registration <span aria-hidden="true">→</span></a>
+                </article>
+
+                <article class="track-card">
+                    <div class="track-topline">
+                        <span class="track-index">Track / 02</span>
+                        <span class="track-icon" aria-hidden="true">◎</span>
+                    </div>
+                    <span class="track-type">Strength meets design</span>
+                    <h3>Robo Rumble</h3>
+                    <p>Put your robot's strength and design to the test in a challenge built for makers.</p>
+                    <a class="track-link" href="test.html">Open registration <span aria-hidden="true">→</span></a>
+                </article>
+
+                <article class="track-card">
+                    <div class="track-topline">
+                        <span class="track-index">Track / 03</span>
+                        <span class="track-icon" aria-hidden="true">↗</span>
+                    </div>
+                    <span class="track-type">Speed and control</span>
+                    <h3>Bot Racing</h3>
+                    <p>Race your bot through the course. Tune your machine, then see how it performs.</p>
+                    <a class="track-link" href="test.html">Open registration <span aria-hidden="true">→</span></a>
+                </article>
+            </div>
+        </section>
+
+        <section class="section container" id="format" aria-labelledby="format-title">
+            <div class="format-panel">
+                <div>
+                    <p class="section-kicker">Mission briefing</p>
+                    <h2 id="format-title">From first sketch to final run.</h2>
+                    <p>Keep it simple: choose a track, prepare your entry, and use the registration form to share your team details.</p>
+                </div>
+                <div class="steps">
+                    <article class="step">
+                        <span class="step-number">01 /</span>
+                        <div><h3>Choose a challenge</h3><p>Pick one or more tracks that suit your idea and build.</p></div>
+                    </article>
+                    <article class="step">
+                        <span class="step-number">02 /</span>
+                        <div><h3>Bring your teammate</h3><p>Register solo or with one teammate. The form supports a maximum team size of two.</p></div>
+                    </article>
+                    <article class="step">
+                        <span class="step-number">03 /</span>
+                        <div><h3>Send your details</h3><p>Complete the participant and team information in the registration form.</p></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="register-panel container" id="register" aria-labelledby="register-title">
+            <div>
+                <p class="section-kicker">Ready to enter?</p>
+                <h2 id="register-title">Your next build starts here.</h2>
+                <p>Open the event registration form to add your team details and select your challenge tracks.</p>
+            </div>
+            <a class="button button-primary" href="test.html">Go to registration <span aria-hidden="true">↗</span></a>
+        </section>
+    </main>
+
+    <footer class="site-footer container">
+        <span>© 2026 FLUX Technical Club / SATI Vidisha</span>
+        <a href="https://www.clubflux.in/">Return to FLUX <span aria-hidden="true">↗</span></a>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById("theme-toggle");
+        const menuToggle = document.getElementById("menu-toggle");
+        const siteNavigation = document.getElementById("site-navigation");
+
+        themeToggle.addEventListener("click", () => {
+            const isDark = document.documentElement.dataset.theme !== "dark";
+            document.documentElement.dataset.theme = isDark ? "dark" : "light";
+            themeToggle.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+            themeToggle.textContent = isDark ? "☼ Theme" : "◐ Theme";
+        });
+
+        menuToggle.addEventListener("click", () => {
+            const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+            menuToggle.setAttribute("aria-expanded", String(!isOpen));
+            menuToggle.setAttribute("aria-label", isOpen ? "Open navigation" : "Close navigation");
+            menuToggle.textContent = isOpen ? "☰" : "×";
+            siteNavigation.classList.toggle("is-open", !isOpen);
+        });
+
+        siteNavigation.addEventListener("click", (event) => {
+            if (event.target instanceof HTMLAnchorElement) {
+                siteNavigation.classList.remove("is-open");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Open navigation");
+                menuToggle.textContent = "☰";
+            }
+        });
+    </script>
+</body>
+</html>
